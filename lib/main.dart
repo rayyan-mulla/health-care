@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:health_care/Screens/Login/login.dart';
 import 'package:health_care/Screens/MainPage/home.dart';
+import 'package:health_care/Screens/Quiz/questions.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:health_care/Screens/MainPage/home.dart';
+import 'package:health_care/Screens/Recommendation/recommendation.dart';
 
 class Questions extends StatefulWidget {
 
@@ -50,12 +51,20 @@ class _QuestionsState extends State<Questions> {
   var numberOfPeople = 0.0;
   var feelingHappy = 0.0;
   var feelingProductive = 0.0;
+  var timeSpend = 0.0;
+  String feelingWorried;
+  String mentalHealthAffectedRelationships;
+  String takingMedications;
 
   void saveQuizData(){
     _reference.child(user.uid).child('Quiz').child(date).set({
       'number of people': numberOfPeople,
       'feeling happy': feelingHappy,
       'feeling productive': feelingProductive,
+      'feeling worried': feelingWorried,
+      'time spend': timeSpend,
+      'mental health affected relationships': mentalHealthAffectedRelationships,
+      'taking medications': takingMedications,
       'date': date,
     });
   }
@@ -239,6 +248,232 @@ class _QuestionsState extends State<Questions> {
                     padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                   ),
 
+                  // Question No: 4
+                  Container(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Question No: 4',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    padding: EdgeInsets.fromLTRB(20, 50, 0, 0),
+                  ),
+
+                  Container(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Are you feeling worried about something that you were enable to sleep at night?',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                  ),
+
+                  Row(
+                    children: [
+                      Radio(
+                        value: 'Yes', 
+                        groupValue: feelingWorried, 
+                        onChanged: (value){
+                          setState(() {
+                            feelingWorried = value;
+                          });
+                        }
+                      ),
+                      Text("Yes", style: TextStyle(fontSize: 16))
+                    ],
+                  ),
+
+                  Row(
+                    children: [
+                      Radio(
+                        value: 'No', 
+                        groupValue: feelingWorried, 
+                        onChanged: (value){
+                          setState(() {
+                            feelingWorried = value;
+                          });
+                        }
+                      ),
+                      Text("No", style: TextStyle(fontSize: 16))
+                    ],
+                  ),
+
+                  // Question No: 5
+                  Container(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Question No: 5',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    padding: EdgeInsets.fromLTRB(20, 50, 0, 0),
+                  ),
+
+                  Container(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'On daily basis how much time do you spend with your near and dear ones?',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                  ),
+
+                  Container(
+                    child: Slider(
+                      min: 0.0,
+                      max: 6.0,
+                      divisions: 6,
+                      value: timeSpend,
+                      activeColor: Colors.lightBlueAccent[700],
+                      inactiveColor: Colors.grey,
+                      onChanged: (value){
+                        setState(() {
+                          timeSpend = value;
+                        });
+                      },
+                    ),
+                  ),
+
+                  Container(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Time Spend = $timeSpend / 6',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ),
+                    padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                  ),
+
+                  //Question No: 6
+                  Container(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Question No: 6',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    padding: EdgeInsets.fromLTRB(20, 50, 0, 0),
+                  ),
+
+                  Container(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'How often has your mental health affected your relationships?',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                  ),
+
+                  Row(
+                    children: [
+                      Radio(
+                        value: 'Very Often', 
+                        groupValue: mentalHealthAffectedRelationships, 
+                        onChanged: (value){
+                          setState(() {
+                            mentalHealthAffectedRelationships = value;
+                          });
+                        }
+                      ),
+                      Text("Very Often", style: TextStyle(fontSize: 16))
+                    ],
+                  ),
+
+                  Row(
+                    children: [
+                      Radio(
+                        value: 'Somewhat Often', 
+                        groupValue: mentalHealthAffectedRelationships, 
+                        onChanged: (value){
+                          setState(() {
+                            mentalHealthAffectedRelationships = value;
+                          });
+                        }
+                      ),
+                      Text("Somewhat Often", style: TextStyle(fontSize: 16))
+                    ],
+                  ),
+
+                  Row(
+                    children: [
+                      Radio(
+                        value: 'Not so Often', 
+                        groupValue: mentalHealthAffectedRelationships, 
+                        onChanged: (value){
+                          setState(() {
+                            mentalHealthAffectedRelationships = value;
+                          });
+                        }
+                      ),
+                      Text("Not so Often", style: TextStyle(fontSize: 16))
+                    ],
+                  ),
+
+                  // Question No: 7
+                  Container(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Question No: 7',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    padding: EdgeInsets.fromLTRB(20, 50, 0, 0),
+                  ),
+
+                  Container(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Are you currently taking any medications?',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                  ),
+
+                  Row(
+                    children: [
+                      Radio(
+                        value: 'Yes', 
+                        groupValue: takingMedications, 
+                        onChanged: (value){
+                          setState(() {
+                            takingMedications = value;
+                          });
+                        }
+                      ),
+                      Text("Yes", style: TextStyle(fontSize: 16))
+                    ],
+                  ),
+
+                  Row(
+                    children: [
+                      Radio(
+                        value: 'No', 
+                        groupValue: takingMedications, 
+                        onChanged: (value){
+                          setState(() {
+                            takingMedications = value;
+                          });
+                        }
+                      ),
+                      Text("No", style: TextStyle(fontSize: 16))
+                    ],
+                  ),
+
+
+
                   // Finish Quiz
                   Container(
                     child: TextButton(
@@ -251,7 +486,7 @@ class _QuestionsState extends State<Questions> {
                         saveQuizData();
                         numberofRows();
                         lastDate();
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Home()));
                       }, 
                       child: Text('FINISH'),
                     ),

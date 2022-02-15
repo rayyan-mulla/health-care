@@ -44,7 +44,7 @@ class _ReportState extends State<Report> {
             else {
               return Container(
                 width: double.infinity,
-                height: 150,
+                height: 280,
                 child: Card(
                   color: Colors.white,
                   margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -112,6 +112,59 @@ class _ReportState extends State<Report> {
                           ),
                         )
                       ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "Were you worried about something: "+snapshot.value['feeling worried'].toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "Time you spend with your near and dear ones: "+snapshot.value['time spend'].toString()+" hr",
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "How often your mental health affected your relationships: "+snapshot.value['mental health affected relationships'].toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "Taking any Medications: "+snapshot.value['taking medications'].toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
                     ],
                   ),
                 ),

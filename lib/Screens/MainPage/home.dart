@@ -15,8 +15,8 @@ class _HomeState extends State<Home> {
   int currentIndex = 0;
 
   final tabs = [
-    Recommendation(),
     Quiz(),
+    Recommendation(),
     Report(),
     Profile()
   ];
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
           unselectedItemColor: Colors.white,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Home"), backgroundColor: Colors.lightBlueAccent[700],),
-            BottomNavigationBarItem(icon: Icon(Icons.quiz_rounded), title: Text("Quiz"), backgroundColor: Colors.lightBlueAccent[700],),
+            BottomNavigationBarItem(icon: Icon(Icons.recommend_rounded), title: Text("Recommendation"), backgroundColor: Colors.lightBlueAccent[700],),
             BottomNavigationBarItem(icon: Icon(Icons.bar_chart), title: Text("Report"), backgroundColor: Colors.lightBlueAccent[700],),
             BottomNavigationBarItem(icon: Icon(Icons.account_circle_sharp), title: Text("Profile"), backgroundColor: Colors.lightBlueAccent[700],),
           ],
