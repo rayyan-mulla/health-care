@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:health_care/Screens/MainPage/home.dart';
 import 'package:health_care/Screens/Recommendation/recommendation.dart';
+import 'package:health_care/Screens/Recommendation/show%20recommendation.dart';
 
 class Questions extends StatefulWidget {
 
@@ -486,7 +487,7 @@ class _QuestionsState extends State<Questions> {
                         saveQuizData();
                         numberofRows();
                         lastDate();
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Home()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>ShowRecommendation()));
                       }, 
                       child: Text('FINISH'),
                     ),
