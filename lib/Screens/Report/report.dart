@@ -18,12 +18,34 @@ class _ReportState extends State<Report> {
   var dateTime;
   var date;
 
+  bool dataFound = false;
+
   @override
   void initState() {
     super.initState();
     dateString = DateTime.now().toString();
     dateTime = DateTime.parse(dateString);
     date = "${dateTime.day}-${dateTime.month}-${dateTime.year}";
+
+    _reference.child(user.uid).child('Quiz').once().then((DataSnapshot snapshot) {
+      // If the Quiz data is not found it will display a 'No Data Found' message
+      if(snapshot.value == null) {
+        print("No data found");
+        if(mounted) {
+          setState(() {
+            dataFound = false;
+          });
+        }
+      }
+      // If the Quiz data is present than it will display the Report
+      else {
+        if(mounted) {
+          setState(() {
+            dataFound = true;
+          });
+        }
+      }
+    });
   }
 
   @override
@@ -31,10 +53,12 @@ class _ReportState extends State<Report> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: FirebaseAnimatedList(
+        child: dataFound ? FirebaseAnimatedList(
           query: _reference.child(user.uid).child('Quiz').orderByChild(date).limitToLast(7),
           itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
             if(snapshot.value == null) {
+              print("No data Found");
+              dataFound = false;
               return Container(
                 child: Center(
                   child: Text('No Data'),
@@ -42,9 +66,10 @@ class _ReportState extends State<Report> {
               );
             }
             else {
+              dataFound = true;
               return Container(
                 width: double.infinity,
-                height: 280,
+                height: 500,
                 child: Card(
                   color: Colors.white,
                   margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -165,12 +190,119 @@ class _ReportState extends State<Report> {
                         )
                       ),
 
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "Trouble in Remembering Things: "+snapshot.value['trouble in remembering thing'].toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "Thought of Ending your Life: "+snapshot.value['thought of ending life'].toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "Temper Outburst: "+snapshot.value['temper outburst'].toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "Feeling Scared for no reason: "+snapshot.value['feeling scared'].toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "Trouble in Falling Asleep: "+snapshot.value['trouble falling asleep'].toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "Thoughts about Hopeless Future: "+snapshot.value['feeling hopeless'].toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "Frequent invovement in Arguments: "+snapshot.value['got into arguments'].toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                          child: Text(
+                            "Poor Appetite: "+snapshot.value['poor appetite'].toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        )
+                      ),
+
                     ],
                   ),
                 ),
               );
             }
           }
+        )
+        : Center(
+          child: Text("No Data Found"),
         )
       )
     );
