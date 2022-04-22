@@ -85,10 +85,10 @@ class _RecommendationState extends State<Recommendation> {
           print("It has only 1 record");
           print(values);
 
-          averageNumberOfPeople = 10;
-          averageFeelingHappy = 500;
-          averageFeelingProductive = 500;
-          averageTimeSpend = 3;
+          averageNumberOfPeople = 25;
+          averageFeelingHappy = 50;
+          averageFeelingProductive = 50;
+          averageTimeSpend = 12;
           averageTroubleInRememberingThing = 50;
           averageThoughtOfEndingLife = 50;
           averageTemperOutburst = 50;

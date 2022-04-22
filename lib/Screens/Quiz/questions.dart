@@ -140,8 +140,8 @@ class _QuestionsState extends State<Questions> {
                   Container(
                     child: Slider(
                       min: 0.0,
-                      max: 20.0,
-                      divisions: 20,
+                      max: 50.0,
+                      divisions: 50,
                       value: numberOfPeople,
                       activeColor: Colors.lightBlueAccent[700],
                       inactiveColor: Colors.grey,
@@ -157,7 +157,7 @@ class _QuestionsState extends State<Questions> {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Number of People Meet = $numberOfPeople / 20',
+                        'Number of People Meet = $numberOfPeople / 50',
                         style: TextStyle(fontSize: 15),
                       ),
                     ),
@@ -190,8 +190,8 @@ class _QuestionsState extends State<Questions> {
                   Container(
                     child: Slider(
                       min: 0.0,
-                      max: 1000.0,
-                      divisions: 20,
+                      max: 100.0,
+                      divisions: 10,
                       value: feelingHappy,
                       activeColor: Colors.lightBlueAccent[700],
                       inactiveColor: Colors.grey,
@@ -207,7 +207,7 @@ class _QuestionsState extends State<Questions> {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Feeling Happy = $feelingHappy / 1000',
+                        'Feeling Happy = $feelingHappy / 100',
                         style: TextStyle(fontSize: 15),
                       ),
                     ),
@@ -240,8 +240,8 @@ class _QuestionsState extends State<Questions> {
                   Container(
                     child: Slider(
                       min: 0.0,
-                      max: 1000.0,
-                      divisions: 20,
+                      max: 100.0,
+                      divisions: 10,
                       value: feelingProductive,
                       activeColor: Colors.lightBlueAccent[700],
                       inactiveColor: Colors.grey,
@@ -257,7 +257,7 @@ class _QuestionsState extends State<Questions> {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Feeling Productive = $feelingProductive / 1000',
+                        'Feeling Productive = $feelingProductive / 100',
                         style: TextStyle(fontSize: 15),
                       ),
                     ),
@@ -343,8 +343,8 @@ class _QuestionsState extends State<Questions> {
                   Container(
                     child: Slider(
                       min: 0.0,
-                      max: 6.0,
-                      divisions: 6,
+                      max: 24.0,
+                      divisions: 24,
                       value: timeSpend,
                       activeColor: Colors.lightBlueAccent[700],
                       inactiveColor: Colors.grey,
