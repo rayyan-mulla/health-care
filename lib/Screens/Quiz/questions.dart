@@ -360,7 +360,7 @@ class _QuestionsState extends State<Questions> {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Time Spend = $timeSpend / 6',
+                        'Time Spend = $timeSpend / 24',
                         style: TextStyle(fontSize: 15),
                       ),
                     ),
